@@ -24,6 +24,7 @@ import com.home.algamoney.event.RecursoCriadoEvent;
 import com.home.algamoney.exceptionhandler.AlgamoneyExceptionHandler.Erro;
 import com.home.algamoney.model.Lancamento;
 import com.home.algamoney.repository.LancamentoRepository;
+import com.home.algamoney.repository.filter.LancamentoFilter;
 
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
@@ -45,8 +46,8 @@ public class LancamentoResource {
 	private ApplicationEventPublisher publisher;
 
 	@GetMapping
-	public List<Lancamento> listar() {
-		return lancamentoRepository.findAll();
+	public List<Lancamento> pesquisar(LancamentoFilter lancamentoFilter) {
+		return lancamentoRepository.filtrar(lancamentoFilter);
 	}
 
 	@GetMapping("/{codigo}")
