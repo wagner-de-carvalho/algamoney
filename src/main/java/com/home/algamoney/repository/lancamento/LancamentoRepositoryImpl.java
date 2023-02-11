@@ -27,6 +27,7 @@ public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery {
 
 		// Criar restrições
 		Predicate[] predicates = criarRestricoes(lancamentoFilter, builder, root);
+		criteria.where(predicates);
 
 		TypedQuery<Lancamento> query = manager.createQuery(criteria);
 		return query.getResultList();
@@ -42,11 +43,13 @@ public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery {
 		}
 
 		if (lancamentoFilter.getDataVencimentoDe() != null) {
-			predicates.add(null);
+			predicates.add(
+					builder.greaterThanOrEqualTo(root.get("dataVencimento"), lancamentoFilter.getDataVencimentoDe()));
 		}
 
 		if (lancamentoFilter.getDataVencimentoAte() != null) {
-			predicates.add(null);
+			predicates.add(
+					builder.lessThanOrEqualTo(root.get("dataVencimento"), lancamentoFilter.getDataVencimentoAte()));
 		}
 
 		return predicates.toArray(new Predicate[predicates.size()]);
