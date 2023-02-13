@@ -27,7 +27,9 @@ public class LancamentoRepositoryImpl implements LancamentoRepositoryQuery {
 		Root<Lancamento> root = criteria.from(Lancamento.class);
 
 		Predicate[] predicates = criarRestricoes(lancamentoFilter, builder, root);
-		criteria.where(predicates);
+		if (predicates.length > 0) {
+			criteria.where(predicates);
+		}
 
 		TypedQuery<Lancamento> query = manager.createQuery(criteria);
 		return query.getResultList();
