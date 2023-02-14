@@ -29,6 +29,7 @@ import com.home.algamoney.exceptionhandler.AlgamoneyExceptionHandler.Erro;
 import com.home.algamoney.model.Lancamento;
 import com.home.algamoney.repository.LancamentoRepository;
 import com.home.algamoney.repository.filter.LancamentoFilter;
+import com.home.algamoney.repository.projection.ResumoLancamento;
 
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
@@ -52,6 +53,11 @@ public class LancamentoResource {
 	@GetMapping
 	public Page<Lancamento> pesquisar(LancamentoFilter lancamentoFilter, Pageable pageable) {
 		return lancamentoRepository.filtrar(lancamentoFilter, pageable);
+	}
+
+	@GetMapping(params = "resumo")
+	public Page<ResumoLancamento> resumir(LancamentoFilter lancamentoFilter, Pageable pageable) {
+		return lancamentoRepository.resumir(lancamentoFilter, pageable);
 	}
 
 	@GetMapping("/{codigo}")
