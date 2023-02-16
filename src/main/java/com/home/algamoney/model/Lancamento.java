@@ -2,9 +2,6 @@ package com.home.algamoney.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.Objects;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,11 +28,9 @@ public class Lancamento {
 
 	@NotNull
 	@Column(name = "data_vencimento")
-	@JsonFormat(pattern =  "dd/MM/yyyy")
 	private LocalDate dataVencimento;
 
 	@Column(name = "data_pagamento")
-	@JsonFormat(pattern =  "dd/MM/yyyy")
 	private LocalDate dataPagamento;
 
 	@NotNull
@@ -56,6 +51,8 @@ public class Lancamento {
 	@ManyToOne
 	@JoinColumn(name = "codigo_pessoa")
 	private Pessoa pessoa;
+
+	private String anexo;
 
 	public Long getCodigo() {
 		return codigo;
@@ -129,9 +126,20 @@ public class Lancamento {
 		this.pessoa = pessoa;
 	}
 
+	public String getAnexo() {
+		return anexo;
+	}
+
+	public void setAnexo(String anexo) {
+		this.anexo = anexo;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(codigo);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		return result;
 	}
 
 	@Override
@@ -143,7 +151,12 @@ public class Lancamento {
 		if (getClass() != obj.getClass())
 			return false;
 		Lancamento other = (Lancamento) obj;
-		return Objects.equals(codigo, other.codigo);
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		return true;
 	}
 
 }

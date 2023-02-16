@@ -1,7 +1,5 @@
 package com.home.algamoney.model;
 
-import java.util.Objects;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,10 +11,11 @@ import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "categoria")
 public class Categoria {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-	
+
 	@NotNull
 	@Size(min = 3, max = 20)
 	private String nome;
@@ -39,7 +38,10 @@ public class Categoria {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codigo);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		return result;
 	}
 
 	@Override
@@ -51,7 +53,12 @@ public class Categoria {
 		if (getClass() != obj.getClass())
 			return false;
 		Categoria other = (Categoria) obj;
-		return Objects.equals(codigo, other.codigo);
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		return true;
 	}
 
 }

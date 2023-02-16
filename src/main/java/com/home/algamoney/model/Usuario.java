@@ -1,7 +1,6 @@
 package com.home.algamoney.model;
 
 import java.util.List;
-import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -19,14 +18,12 @@ public class Usuario {
 	private Long codigo;
 
 	private String nome;
-
 	private String email;
-
 	private String senha;
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "usuario_permissao", joinColumns = @JoinColumn(name = "codigo_usuario"), inverseJoinColumns = @JoinColumn(name = "codigo_permissao"))
-	List<Permissao> permissoes;
+	private List<Permissao> permissoes;
 
 	public Long getCodigo() {
 		return codigo;
@@ -70,7 +67,10 @@ public class Usuario {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(codigo);
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		return result;
 	}
 
 	@Override
@@ -82,7 +82,12 @@ public class Usuario {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
-		return Objects.equals(codigo, other.codigo);
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		return true;
 	}
 
 }
