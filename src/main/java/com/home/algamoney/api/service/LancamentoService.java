@@ -2,6 +2,8 @@ package com.home.algamoney.api.service;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +13,6 @@ import com.home.algamoney.model.Pessoa;
 import com.home.algamoney.repository.LancamentoRepository;
 import com.home.algamoney.repository.PessoaRepository;
 
-import jakarta.validation.Valid;
 
 @Service
 public class LancamentoService {

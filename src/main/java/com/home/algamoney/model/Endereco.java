@@ -1,6 +1,6 @@
 package com.home.algamoney.model;
 
-import jakarta.persistence.Embeddable;
+import javax.persistence.Embeddable;
 
 @Embeddable
 public class Endereco {

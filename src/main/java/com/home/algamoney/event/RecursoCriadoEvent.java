@@ -2,7 +2,7 @@ package com.home.algamoney.event;
 
 import org.springframework.context.ApplicationEvent;
 
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponse;
 
 public class RecursoCriadoEvent extends ApplicationEvent {
 

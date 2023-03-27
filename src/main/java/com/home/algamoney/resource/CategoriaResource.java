@@ -19,8 +19,8 @@ import com.home.algamoney.event.RecursoCriadoEvent;
 import com.home.algamoney.model.Categoria;
 import com.home.algamoney.repository.CategoriaRepository;
 
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.validation.Valid;
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/categorias")

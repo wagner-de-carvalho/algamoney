@@ -8,7 +8,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.home.algamoney.event.RecursoCriadoEvent;
 
-import jakarta.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponse;
 
 @Component
 public class RecursoCriadoListener implements ApplicationListener<RecursoCriadoEvent> {

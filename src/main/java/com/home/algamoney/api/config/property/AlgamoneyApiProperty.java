@@ -1,13 +1,13 @@
 package com.home.algamoney.api.config.property;
 
-import java.util.List;
-
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 @ConfigurationProperties("algamoney")
+@Component
 public class AlgamoneyApiProperty {
 
-	private String originPermitida = "http://localhsot:8000";
+	private String originPermitida = "http://localhost:8000";
 
 	private final Seguranca seguranca = new Seguranca();
 
@@ -24,24 +24,15 @@ public class AlgamoneyApiProperty {
 	}
 
 	public static class Seguranca {
-		private List<String> redirectsPermitidos;
-		
-		private String authServerUrl;
 
-		public List<String> getRedirectsPermitidos() {
-			return redirectsPermitidos;
+		private boolean enableHttps;
+
+		public boolean isEnableHttps() {
+			return enableHttps;
 		}
 
-		public void setRedirectsPermitidos(List<String> redirectsPermitidos) {
-			this.redirectsPermitidos = redirectsPermitidos;
-		}
-
-		public String getAuthServerUrl() {
-			return authServerUrl;
-		}
-
-		public void setAuthServerUrl(String authServerUrl) {
-			this.authServerUrl = authServerUrl;
+		public void setEnableHttps(boolean enableHttps) {
+			this.enableHttps = enableHttps;
 		}
 
 	}
