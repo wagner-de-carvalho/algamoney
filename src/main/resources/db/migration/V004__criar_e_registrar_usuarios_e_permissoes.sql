@@ -50,6 +50,6 @@ INSERT INTO usuario_permissao (codigo_usuario, codigo_permissao) values (2, 5);
 INSERT INTO usuario_permissao (codigo_usuario, codigo_permissao) values (2, 8);
 
 -- teste
-INSERT INTO usuario_permissao (codigo_usuario, codigo_permissao) values (2, 2);
-INSERT INTO usuario_permissao (codigo_usuario, codigo_permissao) values (2, 5);
-INSERT INTO usuario_permissao (codigo_usuario, codigo_permissao) values (2, 8);
+INSERT INTO usuario_permissao (codigo_usuario, codigo_permissao) values (3, 2);
+INSERT INTO usuario_permissao (codigo_usuario, codigo_permissao) values (3, 5);
+INSERT INTO usuario_permissao (codigo_usuario, codigo_permissao) values (3, 8);
